@@ -1,4 +1,5 @@
 const {createUser} = require('../../model/')
+const { errorHandle } = require('../../model/tools/error')
 module.exports = async(req,res,next)=>{
     try{
         let userInput = req.body
@@ -7,6 +8,13 @@ module.exports = async(req,res,next)=>{
         res.status(200).json(user)
     }
     catch(err){
-        res.status(500).json(err)
+        if (err.code == 11000) {
+            res.status(405).json(errorHandle({
+                "code": 11000
+            }))
+        } else {
+            res.status(405).json(err)
+        }
+        
     }
 }

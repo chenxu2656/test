@@ -1,43 +1,10 @@
 <template>
   <div id="headBar">
     <el-row :gutter="20">
-      <el-col :span="6" @click="routerPush(router, '/admin/createBlog')">
-        <div class="grid-content write">
-          <div class="title">
-            <edit style="width: 1em; height: 1em; margin-right: 8px" />
-            <span>写一篇</span></div>
-        </div>
-      </el-col>
-      <!-- <el-col :span="6"><div class="grid-content bg-purple">
-        <div class="title"><span>评论<br>数量</span></div>
-        </div>
-      </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple" /></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple" /></el-col> -->
+      你好
     </el-row>
   </div>
-  <!-- <div id="con">
-    <el-row :gutter="20">
-      <el-col :span="8">
-        <div class="cont" id="latestBlog">
-          <div class="tit">
-            <div class="titCon">近期文章</div>
-            <div class="readMore">阅读更多</div>
-          </div>
-        </div>
-      </el-col>
-<el-col :span="8">
-      <div class="cont" id="pinglun">
-
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <div class="cont" id="latestBlog">
-
-        </div>
-      </el-col>
-    </el-row>
-  </div> -->
+  
 </template>
 <style lang="scss" scoped>
 #headBar {
@@ -84,8 +51,4 @@
 }
 </style>
 <script setup>
-import { Edit } from "@element-plus/icons-vue";
-import {useRouter} from 'vue-router'
-import { routerPush } from "../../../js/index";
-const router = useRouter();
 </script>

@@ -4,7 +4,7 @@
   </div>
   <el-card class="box-card" id="login">
     <div id="tit">
-      <span>SIGN IN</span>
+      <span>EMC测试数据库</span>
     </div>
     <div id="loginDiv">
       <el-form ref="ruleFormRef" 
@@ -39,7 +39,7 @@
         </el-form-item>
       </el-form>
       <el-divider >Other</el-divider>
-      <div id="reg" @click="router.push({ path: '/admin/login/up' })">立即注册</div>
+      <div id="reg" @click="router.push({ path: '/login/up' })">立即注册</div>
     </div>
 
   </el-card>
@@ -111,9 +111,7 @@
 import axios from "axios";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
-import { getSys } from '../../../js/api/sysSetting'
 let router = useRouter()
-let token = ""
 const ruleForm = reactive({
   pass: "",
   email: "",
@@ -128,29 +126,7 @@ let submitForm = async (email, pass) => {
     }
   })
   console.log(resp);
-  if (resp) {
-    token = resp.data.token
-    //获取七牛云pk,sk,bucketName
-    localStorage.setItem("token", token)
-    let qiniu = await getSys()
-    console.log(qiniu);
-    if (qiniu.data.length == 1) {
-      // 把信息放到token里面
-      localStorage.setItem('qiniuToken', JSON.stringify(qiniu.data[0]))
-    } else if (qiniu.data.length == 0) {
-      // 用户还没有设置qiniu信息，在后面上传图片的时候handle
-      console.log('nothing');
-    } else {
-      //TODO: 出现多个setting信息, 告诉用户有这个error，
-      console.log('err');
-    }
-    if (localStorage.getItem('prev')) {
-      router.push({ path: localStorage.getItem('prev') })
-      localStorage.removeItem('prev')
-    } else {
-      router.push({ path: '/admin' })
-    }
-
-  }
+  localStorage.setItem('token',"1")
+  router.push({ path: '/' })
 }
 </script>

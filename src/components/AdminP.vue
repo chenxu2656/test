@@ -1,8 +1,9 @@
 <template>
   <el-container>
     <el-header>
-      <div id="title" class="topbarCon">XCCIT</div>
-      <div id="name" class="topbarCon">btfblog 后台管理系统</div>
+      <!-- <div id="title" class="topbarCon">EMC测试数据库</div> -->
+      <div id="name" class="topbarCon">EMC测试数据库</div>
+      <div id="logout" class="logout" @click="logout()">退出登陆</div>
     </el-header>
     <el-container id="con">
       <el-aside class="el-aside"> <side-menu-bar  /></el-aside>
@@ -10,12 +11,17 @@
         <router-view></router-view
       ></el-main>
     </el-container>
-    <el-footer>Footer</el-footer>
+    <el-footer>EMC测试数据库</el-footer>
   </el-container>
 </template>
 <script setup>
 import SideMenuBar from "../components/admin/SideMenuBar.vue";
-// import { useRoute } from 'vue-router'
+import { useRouter } from "vue-router";
+let router = useRouter()
+const logout = ()=>{
+  localStorage.removeItem('token')
+  router.push({ path: '/login/in' })
+}
 </script>
 <style lang="scss" scoped>
 
@@ -33,6 +39,12 @@ import SideMenuBar from "../components/admin/SideMenuBar.vue";
     align-items: center;
     font-size: 25px;
     font-weight: 700;
+  }
+  .logout {
+    height: 100%;
+    line-height: 60px;
+    color: #cd4277;
+    cursor: pointer;
   }
 }
 #con{
@@ -52,6 +64,7 @@ import SideMenuBar from "../components/admin/SideMenuBar.vue";
   border-top: 1px solid #dddfe5;
   bottom: 0px;
   height: 60px;
+  text-align: center;
 }
 
 </style>

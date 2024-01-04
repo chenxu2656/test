@@ -28,181 +28,85 @@ const userStructure = {
         default: "active"    //active | inactive
     }
 }
-const articleStructure = {
-    title: {
+const emsStructure = {
+    daihao: {
         type: String,
         require: true
     },
-    ctime: {
+    xinghao: {
         type: String,
         default: Date.now
     },
-    content: {
+    fengzhuang: {
         type: String,
         require: true
     },
-    tags: {
-        type: Array,
+    ceshi: {
+        type: String,
         require: true
     },
-    imgPath: {
+    cd: {
         type: String,
         require: false
     },
-    folders: {
-        type: Array,
+    ad: {
+        type: String,
         require: true
     },
-    tage: {
-        type: Number,
+    esd: {
+        type: String,
+        require: false
+    },
+    eft: {
+        type: String,
+        require: false
+    },
+    ceshiren: {
+        type: String,
         require: false
     }
 }
 // 文件夹 
-const folderStructure = {
-    folderName: {
+const emiStructure = {
+    daihao: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
-    ctime: {
-        type: String,
-        default: Date.now
-    }
-}
-
-// tag
-const tagsStructure = {
-    tagName: {
-        type: String,
-        require: true,
-        unique: true
-    },
-    ctime: {
+    xinghao: {
         type: String,
         default: Date.now
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-}
-// 评论
-
-
-//setting
-const syssettingStructure = {
-    ak: {
-        type: String
     },
-    sk: {
-        type: String
+    fengzhuang: {
+        type: String,
+        require: true
     },
-    url: {
-        type: String
+    dbuv15: {
+        type: String,
+        require: true
     },
-    backetName: {
-        type: String
+    dbuv30: {
+        type: String,
+        require: false
+    },
+    dbuv130: {
+        type: String,
+        require: true
+    },
+    dbuv3g: {
+        type: String,
+        require: false
+    },
+    xianzhidbuv: {
+        type: String,
+        require: false
+    },
+    ceshiren: {
+        type: String,
+        require: false
     }
 }
-
-// 前台设置
-const frontDeskSetting = {
-    name: {
-        require: true,
-        type: String
-    },
-    location: {
-        require: true,
-        type: String
-    },
-    socialMedia: {
-        sina: String,
-        github: String,
-        segmentfault: String,
-        csdn: String
-    },
-    avatar: {
-        require: true,
-        type: String
-    },
-    lunbo: {
-        open: {
-            require: true,
-            type: Boolean,
-            default: false
-        },
-        folder: {
-            require: true,
-            type: String
-        }
-    },
-    reward: {
-        open: {
-            require: true,
-            type: Boolean,
-            default: false
-        },
-        alipay: {
-            require: true,
-            type: String
-        },
-        wechat: {
-            require: true,
-            type: String
-        }
-    },
-    record: {
-        require: true,
-        type: String
-    }
-}
-
-const todoList = {
-    title: {
-        require: true,
-        type: String
-    },
-    startTime: {
-        type: String
-    },
-    endTime: {
-        type: String
-    },
-    folderName: {
-        
-    }
-}
-const navItemList = {
-    title: {
-        require: true,
-        type: String
-    },
-    index: {
-        require: true,
-        type: String
-    },
-    weight: {
-        require: true,
-        type: String
-    },
-    type: {
-        require: true,
-        type: String
-    },
-    dataSourceId: {
-        require: true,
-        type: String
-    },
-    status: {
-        require: true,
-        type: Boolean,
-        default: true
-    }
-}
-// 点赞
 module.exports = {
     userStructure,
-    articleStructure,
-    folderStructure,
-    tagsStructure,
-    syssettingStructure,
-    frontDeskSetting,
-    navItemList
+    emsStructure,
+    emiStructure
 }

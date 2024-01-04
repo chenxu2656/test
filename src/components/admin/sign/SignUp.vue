@@ -29,7 +29,7 @@
         </el-form-item>
       </el-form>
       <el-divider>Other</el-divider>
-      <div id="reg" @click="router.push({ path: '/admin/login/in' })">立即登陆</div>
+      <div id="reg" @click="router.push({ path: '/login/in' })">立即登陆</div>
     </div>
 
   </el-card>
@@ -119,7 +119,7 @@ const handleRegister = () => {
     params: ruleForm
   }).then((resp) => {
     console.log(resp);
-    router.push({ path: '/admin/login/in' })
+    router.push({ path: '/login/in' })
   }).catch((err) => {
     console.log(err);
   })

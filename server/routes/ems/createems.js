@@ -1,11 +1,11 @@
 // 创建一个博客
-const {createArticle} = require('../../model/index')
+const {createems} = require('../../model/index')
 module.exports = async (req,res)=>{
-    const article= req.body
+    const emsCon= req.body
     try {
-        const art = await createArticle(article)
-        if(art) {
-            res.status(200).json(art)
+        const ems = await createems(emsCon)
+        if(ems) {
+            res.status(200).json(ems)
         } else {
             res.status(500).json({
                 'err': 'err'

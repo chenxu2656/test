@@ -9,18 +9,9 @@ require('./model/tools/connectDatabase')
 // 用户操作
 const User = require('./routes/User');
 // 文章操作
-const Article = require('./routes/article')
+const ems = require('./routes/ems')
 // 文件夹操作
-
-const Folder = require('./routes/folder')
-
-const Tags = require('./routes/tags')
-const Qiniu = require('./routes/qiniu')
-const Setting = require('./routes/setting')
-
-const NavItem = require('./routes/navItem')
-
-const FrontDesk = require('./routes/frontDesk')
+const emi = require('./routes/emi')
 const errhandle = require('./middleware/errhandle')
 var app = express()
 // 允许跨域 否则 前台请求可能会报错
@@ -39,14 +30,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // token 校验中间件
-app.use(require('./middleware/tokenCheck'))
+// app.use(require('./middleware/tokenCheck'))
 app.use('/api/user', User);
-app.use('/api/article',Article)
-app.use('/api/folder',Folder)
-app.use('/api/tags',Tags)
-app.use('/api/qiniu',Qiniu)
-app.use('/api/setting',Setting)
-app.use('/api/navItem',NavItem)
-app.use('/api/front',FrontDesk)
+app.use('/api/ems',ems)
+app.use('/api/emi',emi)
 app.use(errhandle)
 module.exports = app;

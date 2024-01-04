@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { tokenCheck } from "./tokenCheck";
 //单页
-const SinglePage = require('../views/front/components/SinglePage.vue')
-const FrontEnd = require('../views/front/FrontEnd.vue')
+// const SinglePage = require('../views/front/components/SinglePage.vue')
+// const FrontEnd = require('../views/front/FrontEnd.vue')
 
-const GeneralPage = require('../views/front/components/GeneralPage.vue')
-const ArticleList = require('../src/components/homePage/articleList.vue')  
-const ArticleDetail = require('../src/components/homePage/articleDetail.vue')
-const TagList = require('../src/components/homePage/tagList.vue')
+// const GeneralPage = require('../views/front/components/GeneralPage.vue')
+// const ArticleList = require('../src/components/homePage/articleList.vue')  
+// const ArticleDetail = require('../src/components/homePage/articleDetail.vue')
+// const TagList = require('../src/components/homePage/tagList.vue')
 
 const AdminMa = require('../views/admin/AdminMa.vue')
 const LogIn = require('../src/components/AdminLogin.vue')
@@ -17,70 +17,69 @@ const AdminP = require('../src/components/AdminP.vue')
 const AdminHomePage = require('../src/components/admin/content/HomePage.vue')
 const CreateBlog = require('../src/components/admin/content/CreateBlog.vue')
 
-const BlogList = require('../src/components/admin/content/BlogList.vue')
+const EmsList = require('../src/components/admin/content/EmsList.vue')
 const DraftBlog = require('../src/components/admin/content/DraftBlog.vue')
 const TagsManage = require('../src/components/admin/content/TagsManage.vue')
 const TrashBlog = require('../src/components/admin/content/TrashBlog.vue')
-const FolderManage = require('../src/components/admin/content/FolderManage.vue')
+const EmiManage = require('../src/components/admin/content/EmiManage.vue')
 const FileManage = require('../src/components/admin/content/FileManage.vue')
 const SysSetting = require('../src/components/admin/content/systemSetting/SysSetting.vue')
 
 const FrontDesk = require('../src/components/admin/content/frontDesk/FrontDesk.vue')
 const routes = [
-    {
-        path: "/",
-        components: FrontEnd,
-        children: [
-            {
-                path: "/",
-                components: GeneralPage,
-                children: [
-                    {
-                        path: "/",
-                        components: ArticleList,
-                    },
-                    {
-                        path: "/blog/tag/:id",
-                        components: ArticleList
-                    },
-                    {
-                        path: "/blog/folder/:id",
-                        components: ArticleList
-                    },
-                    {
-                        path: "/blog/:id",
-                        components: ArticleDetail
-                    },
-                    {
-                        path: "tags",
-                        components: TagList
-                    },
-                    {
-                        path: '/custom/article/:index',
-                        components: ArticleDetail
-                    },
-                    {
-                        path: '/custom/tag/:index',
-                        components: ArticleList
-                    },
-                    {
-                        path: '/custom/folder/:index',
-                        components: ArticleList
-                    },
-                ]
-            },
-            {
-                path: '/custom/sp/:index',
-                components: SinglePage
-            },
-        ]
-    },
+    // {
+    //     path: "/",
+    //     components: FrontEnd,
+    //     children: [
+    //         {
+    //             path: "/",
+    //             components: GeneralPage,
+    //             children: [
+    //                 {
+    //                     path: "/",
+    //                     components: ArticleList,
+    //                 },
+    //                 {
+    //                     path: "/blog/tag/:id",
+    //                     components: ArticleList
+    //                 },
+    //                 {
+    //                     path: "/blog/folder/:id",
+    //                     components: ArticleList
+    //                 },
+    //                 {
+    //                     path: "/blog/:id",
+    //                     components: ArticleDetail
+    //                 },
+    //                 {
+    //                     path: "tags",
+    //                     components: TagList
+    //                 },
+    //                 {
+    //                     path: '/custom/article/:index',
+    //                     components: ArticleDetail
+    //                 },
+    //                 {
+    //                     path: '/custom/tag/:index',
+    //                     components: ArticleList
+    //                 },
+    //                 {
+    //                     path: '/custom/folder/:index',
+    //                     components: ArticleList
+    //                 },
+    //             ]
+    //         },
+    //         {
+    //             path: '/custom/sp/:index',
+    //             components: SinglePage
+    //         },
+    //     ]
+    // },
     
     {
-        path: "/admin",
+        path: "/",
         components: AdminMa,
         children: [
-            
             {
                 path: "",
                 components: AdminP,
@@ -98,8 +97,8 @@ const routes = [
                         components: CreateBlog,
                     },
                     {
-                        path: "blogList",
-                        components: BlogList
+                        path: "ems",
+                        components: EmsList
                     },
                     {
                         path: "draft",
@@ -115,8 +114,8 @@ const routes = [
                         components: TrashBlog
                     },
                     {
-                        path: "folder",
-                        components: FolderManage
+                        path: "emi",
+                        components: EmiManage
                     },
                     {
                         path: "qiniuFile",
@@ -130,7 +129,10 @@ const routes = [
                         path: "frontDesk",
                         components: FrontDesk
                     }
-                ]
+                ],
+                beforeEnter: (to, from, next)=>{
+                    tokenCheck(to,from,next)
+                }
             },
             {
                 path: "login",
@@ -149,9 +151,7 @@ const routes = [
             
         ],
         // 判断是否已经登陆
-        beforeEnter: (to, from, next)=>{
-            tokenCheck(to,from,next)
-        }
+        
     }
 ]
 const router = createRouter({

@@ -1,6 +1,6 @@
 // 封装拦截器
 import axios from 'axios'
-import  errorhandle  from './errorhandle'
+// import  errorhandle  from './errorhandle'
 const instance = axios.create({ })
 // 请求拦截
 instance.interceptors.request.use((config)=>{
@@ -13,11 +13,13 @@ instance.interceptors.request.use((config)=>{
     console.log(err);
 })
 // 响应拦截
-instance.interceptors.response.use((resp)=>{
-    return resp.data
-},err=>{
-    errorhandle(err)
-})
+// instance.interceptors.response.use(async (resp)=>{
+//     return resp.data
+// },async err=>{
+//     console.error('进行响应拦截');
+//     console.error(await err);
+//     errorhandle(err)
+// })
 
 export {
     instance

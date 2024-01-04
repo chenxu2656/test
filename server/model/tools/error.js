@@ -8,11 +8,7 @@ const errorHandle = (err) => {
     const code = err.code
     switch (code) {
         case 11000 :
-            return {
-                "errMsg": errCode.repeat,
-                "repeatValue" : err.keyValue
-            }
-            break;
+            return errCode.repeat
         default:
             return {
                 'errMsg': "错误未被定义"

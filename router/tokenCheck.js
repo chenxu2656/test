@@ -8,7 +8,7 @@ const tokenCheck = (to,from,next)=>{
         if (!token) {
             // 如果有token继续 没有token 登陆
             next({
-                path: "/admin/login/in"
+                path: "/login/in"
             })
         } else {
             // token 鉴权， 如果token过期
