@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://chenxu2656:GaSaQ0JpdwuYXaE7@cluster0.d8a2gjk.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://root:1234@124.222.84.233:27017/')
     .then(()=>{
         console.log('database connect successfully');
     })
